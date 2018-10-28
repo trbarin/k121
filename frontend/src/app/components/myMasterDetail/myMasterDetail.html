@@ -1,0 +1,4 @@
+<button type="button" class="btn btn-default" ng-if="!$ctrl.isDetail" ng-click="$ctrl.add()">Adicionar <i class="fas fa-user-plus"></i></button>
+<my-table ng-if="!$ctrl.isDetail" records="$ctrl.records" on-delete="$ctrl.delete(record)" on-edit="$ctrl.edit(record)"></my-table>
+<my-detail ng-if="$ctrl.isDetail" record="$ctrl.record" is-new-record="$ctrl.isNewRecord" on-cancel="$ctrl.cancel()"
+    on-save="$ctrl.save(record)"></my-detail>

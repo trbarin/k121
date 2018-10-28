@@ -1,0 +1,8 @@
+{
+  "name": "k121",
+  "description": "Teste Prático - Kenoby",
+  "repository": "https://github.com/trbarin/k121",
+  "logo": "",
+  "keywords": ["node", "restify", "heroku"],
+  "image": "heroku/nodejs"
+}

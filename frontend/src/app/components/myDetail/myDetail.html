@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Informe um nome" ng-model="$ctrl.record.name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Informe um email" ng-model="$ctrl.record.email">
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">Cancelar <i class="fas fa-undo"></i></button>
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.save()">Salvar <i class="far fa-save"></i></button>
+</form>

@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Amigo</th>
+            <th class="icons">Editar</th>
+            <th class="icons">Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="record in $ctrl.records">
+            <td class="infos">{{record.name}}</td>
+            <td class="infos">{{record.email}}</td>
+            <td class="infos">{{record.friend}}</td>
+            <td class="icons" ng-click="$ctrl.edit(record)"><i class="fas fa-user-edit"></i></td>
+            <td class="icons" ng-click="$ctrl.delete(record)"><i class="fas fa-user-minus"></i></td>
+        </tr>
+    </tbody>
+</table>

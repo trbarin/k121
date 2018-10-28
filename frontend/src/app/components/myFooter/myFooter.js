@@ -1,8 +1,9 @@
 const name = "myFooter";
 
 class controller {
-  /** @ngInject */
-  constructor() {}
+  constructor() {
+    "ngInject";
+  }
 
   $onInit() {}
 

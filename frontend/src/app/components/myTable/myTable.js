@@ -1,8 +1,9 @@
 const name = "myTable";
 
 class controller {
-  /** @ngInject */
-  constructor() {}
+  constructor() {
+    "ngInject";
+  }
 
   $onInit() {}
 

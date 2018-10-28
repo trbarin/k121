@@ -3,8 +3,8 @@ const name = "myMasterDetail";
 let _this;
 
 class controller {
-  /** @ngInject */
   constructor(SecretSantaService) {
+    "ngInject";
     this.SecretSantaService = SecretSantaService;
 
     this.isDetail = false;

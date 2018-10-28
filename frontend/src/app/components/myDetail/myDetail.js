@@ -1,8 +1,8 @@
 const name = "myDetail";
 
 class controller {
-  /** @ngInject */
   constructor() {
+    "ngInject";
     this.record = {};
   }
 

@@ -1,8 +1,9 @@
 const name = "home";
 
 class controller {
-  /** @ngInject */
-  constructor() {}
+  constructor() {
+    "ngInject";
+  }
 
   $onInit() {}
 

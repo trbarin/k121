@@ -1,8 +1,9 @@
 const name = "modelo";
 
 class controller {
-  /** @ngInject */
-  constructor() {}
+  constructor() {
+    "ngInject";
+  }
 
   $onInit() {}
 

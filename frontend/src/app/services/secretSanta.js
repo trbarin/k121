@@ -1,6 +1,6 @@
 export class SecretSantaService {
-  /** @ngInject */
   constructor(Restangular) {
+    "ngInject";
     this.secretSanta = Restangular.all("secretSanta/");
   }
 

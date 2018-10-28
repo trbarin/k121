@@ -1,8 +1,9 @@
 const name = "myHeader";
 
 class controller {
-  /** @ngInject */
-  constructor() {}
+  constructor() {
+    "ngInject";
+  }
 
   $onInit() {}
 

@@ -4,9 +4,13 @@ Para configurar o front-end localmente, é necessário instalar as dependência 
 
 > npm install
 
-Para subir o servidor localmente, é necessário rodar o comando abaixo:
+Para subir o front-end utilizando `back-end local`, é necessário rodar o comando abaixo:
 
 > npm run start
+
+Para subir o front-end utilizando `back-end cloud`, é necessário rodar o comando abaixo:
+
+> npm run start-cloud
 
 Por padrão, o endereço do servidor é:
 

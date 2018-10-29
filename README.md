@@ -47,8 +47,7 @@ Content-Type: application/json
     {
         "_id": "5bd6050031beac000442ea28",
         "name": "Fulano",
-        "email": "fulano@provedor.com.br",
-        "__v": 0
+        "email": "fulano@provedor.com.br"
     }
 
 ### Excluir registro

@@ -20,13 +20,18 @@ Para facilitar, publiquei no Heroku os projetos.
 
 ### Obter lista de registros
 GET /secretSanta/ HTTP/1.1
+
 Host: k121-backend.herokuapp.com
+
 Content-Type: application/json
 
 ### Inserir novo registro
 POST /secretSanta/ HTTP/1.1
+
 Host: k121-backend.herokuapp.com
+
 Content-Type: application/json
+
     {
         "name": "Thiago bol 2",
         "email": "trbarin@bol.com.br"
@@ -34,8 +39,11 @@ Content-Type: application/json
 
 ### Atualizar registro
 PUT /secretSanta/:id HTTP/1.1
+
 Host: k121-backend.herokuapp.com
+
 Content-Type: application/json
+
     {
         "_id": "5bd6050031beac000442ea28",
         "name": "Thiago bol 2",
@@ -45,5 +53,7 @@ Content-Type: application/json
 
 ### Excluir registro
 DELETE /secretSanta/:id HTTP/1.1
+
 Host: k121-backend.herokuapp.com
+
 Content-Type: application/json

@@ -33,8 +33,8 @@ Host: k121-backend.herokuapp.com
 Content-Type: application/json
 
     {
-        "name": "Thiago bol 2",
-        "email": "trbarin@bol.com.br"
+        "name": "Beltrano",
+        "email": "beltrano@provedor.com.br"
     }
 
 ### Atualizar registro
@@ -46,8 +46,8 @@ Content-Type: application/json
 
     {
         "_id": "5bd6050031beac000442ea28",
-        "name": "Thiago bol 2",
-        "email": "trbarin@bol.com.br",
+        "name": "Fulano",
+        "email": "fulano@provedor.com.br",
         "__v": 0
     }
 

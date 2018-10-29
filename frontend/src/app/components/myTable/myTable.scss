@@ -5,5 +5,8 @@ my-table {
   .icons {
     text-align: center;
     width: 5%;
+    i {
+      cursor: pointer;
+    }
   }
 }

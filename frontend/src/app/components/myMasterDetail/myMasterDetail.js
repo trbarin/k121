@@ -3,13 +3,17 @@ const name = "myMasterDetail";
 let _this;
 
 class controller {
-  constructor(SecretSantaService) {
+  constructor(SecretSantaService, $rootScope, $scope) {
     "ngInject";
     this.SecretSantaService = SecretSantaService;
+    this.$rootScope = $rootScope;
 
     this.isDetail = false;
     this.isNewRecord = false;
     this.record = {};
+    this.records = [];
+
+    this.onUpdate = $scope.$on("onUpdate", this.reload);
 
     _this = this;
   }
@@ -22,34 +26,40 @@ class controller {
 
   $doCheck() {}
 
-  $onDestroy() {}
+  $onDestroy() {
+    this.onUpdate();
+  }
 
   $postLink() {}
 
   add() {
-    this.isDetail = true;
-    this.isNewRecord = true;
     this.record = {};
+    this.setDetail(true, true);
   }
 
   cancel() {
-    this.isDetail = false;
-    this.isNewRecord = false;
     this.record = {};
+    this.setDetail(false, false);
   }
 
   delete(record) {
-    this.isDetail = false;
-    this.isNewRecord = false;
     this.SecretSantaService.delete(record)
       .then(this.reload)
       .catch(this.error);
   }
 
   edit(record) {
-    this.isDetail = true;
-    this.isNewRecord = false;
+    this.setDetail(true, false);
     angular.copy(record, this.record);
+  }
+
+  setDetail(isDetail, isNewRecord) {
+    _this.isDetail = isDetail;
+    _this.isNewRecord = isNewRecord;
+    _this.$rootScope.$emit("onRecordsChange", {
+      isDetail: _this.isDetail,
+      records: _this.records.length
+    });
   }
 
   error(error) {
@@ -59,9 +69,8 @@ class controller {
   reload() {
     _this.SecretSantaService.get()
       .then(result => {
-        _this.isDetail = false;
-        _this.isNewRecord = false;
         _this.records = result.data;
+        _this.setDetail(false, false);
       })
       .catch(_this.error);
   }

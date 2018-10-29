@@ -1,13 +1,28 @@
-<form>
-    <div class="form-group">
+<form name="formContact">
+    <div name="formName" class="form-group">
         <label for="name">Nome</label>
-        <input type="text" class="form-control" id="name" placeholder="Informe um nome" ng-model="$ctrl.record.name">
+        <label style="color:red" ng-show="(formContact.name.$touched || formContact.name.$dirty) && formContact.name.$invalid">
+            <em ng-show="formContact.name.$error.required"> Este campo é obrigatório</em>
+        </label>
+        <input type="text" class="form-control" name="name" placeholder="Informe um nome" ng-model="$ctrl.record.name"
+            required>
+
     </div>
-    <div class="form-group">
+    <div name="formEmail" class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Informe um email" ng-model="$ctrl.record.email">
+        <label style="color:red" ng-show="(formContact.email.$touched || formContact.email.$dirty) && formContact.email.$invalid">
+            <em ng-show="formContact.email.$error.required"> Este campo é obrigatório</em>
+            <em ng-show="formContact.email.$error.email"> Este email é inválido</em>
+        </label>
+        <input type="email" class="form-control" name="email" placeholder="Informe um email" ng-model="$ctrl.record.email"
+            ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" required>
+
     </div>
 
-    <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">Cancelar <i class="fas fa-undo"></i></button>
-    <button type="button" class="btn btn-primary" ng-click="$ctrl.save()">Salvar <i class="far fa-save"></i></button>
+    <div class="text-right">
+        <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">Cancelar <i class="fas fa-undo"></i></button>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-disabled="formContact.$invalid">Salvar
+            <i class="
+            far fa-save"></i></button>
+    </div>
 </form>

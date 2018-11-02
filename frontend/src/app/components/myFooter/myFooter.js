@@ -1,6 +1,6 @@
-const name = "myFooter";
+import ngAsync from "../../commons/ngAsync";
 
-let _this;
+const name = "myFooter";
 
 class controller {
   constructor(RaffleService, $rootScope, $timeout) {
@@ -15,8 +15,6 @@ class controller {
     this.onRecordsChange = $rootScope.$on("onRecordsChange", (event, data) => {
       this.canRaffle = !data.isDetail && data.records > 1;
     });
-
-    _this = this;
   }
 
   $onInit() {}
@@ -26,15 +24,15 @@ class controller {
   $doCheck() {}
 
   $onDestroy() {
-    _this.onRecordsChange();
+    this.onRecordsChange();
   }
 
   $postLink() {}
 
-  raffle() {
-    this.RaffleService.raffle().then(() => {
-      _this.$timeout(() => _this.$rootScope.$broadcast("onUpdate"), 250);
-    });
+  @ngAsync()
+  async raffle() {
+    await this.RaffleService.raffle();
+    this.$timeout(() => this.$rootScope.$broadcast("onUpdate"), 250);
   }
 }
 

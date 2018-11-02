@@ -1,6 +1,6 @@
-const name = "myMasterDetail";
+import ngAsync from "../../commons/ngAsync";
 
-let _this;
+const name = "myMasterDetail";
 
 class controller {
   constructor(SecretSantaService, $rootScope, $scope) {
@@ -14,8 +14,6 @@ class controller {
     this.records = [];
 
     this.onUpdate = $scope.$on("onUpdate", this.reload);
-
-    _this = this;
   }
 
   $onInit() {
@@ -42,10 +40,14 @@ class controller {
     this.setDetail(false, false);
   }
 
-  delete(record) {
-    this.SecretSantaService.delete(record)
-      .then(this.reload)
-      .catch(this.error);
+  @ngAsync()
+  async delete(record) {
+    try {
+      await this.SecretSantaService.delete(record);
+      this.reload();
+    } catch (error) {
+      this.error(error);
+    }
   }
 
   edit(record) {
@@ -54,11 +56,11 @@ class controller {
   }
 
   setDetail(isDetail, isNewRecord) {
-    _this.isDetail = isDetail;
-    _this.isNewRecord = isNewRecord;
-    _this.$rootScope.$emit("onRecordsChange", {
-      isDetail: _this.isDetail,
-      records: _this.records.length
+    this.isDetail = isDetail;
+    this.isNewRecord = isNewRecord;
+    this.$rootScope.$emit("onRecordsChange", {
+      isDetail: this.isDetail,
+      records: this.records.length
     });
   }
 
@@ -66,25 +68,29 @@ class controller {
     console.log(error);
   }
 
-  reload() {
-    _this.SecretSantaService.get()
-      .then(result => {
-        _this.records = result.data;
-        _this.setDetail(false, false);
-      })
-      .catch(_this.error);
+  @ngAsync()
+  async reload() {
+    try {
+      const result = await this.SecretSantaService.get();
+      this.records = result.data;
+      this.setDetail(false, false);
+    } catch (error) {
+      this.error(error);
+    }
   }
 
-  save(record) {
-    let promise;
-
-    if (this.isNewRecord) {
-      promise = this.SecretSantaService.add(record);
-    } else {
-      promise = this.SecretSantaService.update(record);
+  @ngAsync()
+  async save(record) {
+    try {
+      if (this.isNewRecord) {
+        await this.SecretSantaService.add(record);
+      } else {
+        await this.SecretSantaService.update(record);
+      }
+      this.reload();
+    } catch (error) {
+      this.error(error);
     }
-
-    promise.then(_this.reload).catch(_this.error);
   }
 }
 
